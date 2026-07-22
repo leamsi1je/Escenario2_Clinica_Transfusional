@@ -1,0 +1,817 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MascaraAncla
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Ampoule_Syringe1
+    m_Weight: 1
+  - m_Path: Ampoule_Syringe:Ampoule_Syringe1
+    m_Weight: 1
+  - m_Path: Armature on_off
+    m_Weight: 1
+  - m_Path: Armature on_off/General
+    m_Weight: 1
+  - m_Path: Armature on_off/General/General_end
+    m_Weight: 1
+  - m_Path: Armature on_off/General.001
+    m_Weight: 1
+  - m_Path: Armature on_off/General.001/General.001_end
+    m_Weight: 1
+  - m_Path: blanket1
+    m_Weight: 1
+  - m_Path: boton_on_off
+    m_Weight: 1
+  - m_Path: boton_on_off.001
+    m_Weight: 1
+  - m_Path: Box01
+    m_Weight: 1
+  - m_Path: Box09
+    m_Weight: 1
+  - m_Path: Box10
+    m_Weight: 1
+  - m_Path: Capsule01
+    m_Weight: 1
+  - m_Path: Capsule02
+    m_Weight: 1
+  - m_Path: Capsule03
+    m_Weight: 1
+  - m_Path: Capsule04
+    m_Weight: 1
+  - m_Path: ChamferBox01
+    m_Weight: 1
+  - m_Path: ChamferBox02
+    m_Weight: 1
+  - m_Path: ChamferBox03
+    m_Weight: 1
+  - m_Path: ChamferBox04
+    m_Weight: 1
+  - m_Path: ChamferBox09
+    m_Weight: 1
+  - m_Path: ChamferBox14
+    m_Weight: 1
+  - m_Path: ChamferBox15
+    m_Weight: 1
+  - m_Path: Cube
+    m_Weight: 1
+  - m_Path: Cube.001
+    m_Weight: 1
+  - m_Path: Cube.002
+    m_Weight: 1
+  - m_Path: Cube.003
+    m_Weight: 1
+  - m_Path: Cube.004
+    m_Weight: 1
+  - m_Path: Cube.005
+    m_Weight: 1
+  - m_Path: Cube.006
+    m_Weight: 1
+  - m_Path: Cube.007
+    m_Weight: 1
+  - m_Path: Cube.008
+    m_Weight: 1
+  - m_Path: Cube.009
+    m_Weight: 1
+  - m_Path: Cube.010
+    m_Weight: 1
+  - m_Path: Cube.011
+    m_Weight: 1
+  - m_Path: Cube.012
+    m_Weight: 1
+  - m_Path: Cube.013
+    m_Weight: 1
+  - m_Path: Cube.014
+    m_Weight: 1
+  - m_Path: Cube.015
+    m_Weight: 1
+  - m_Path: Cube.016
+    m_Weight: 1
+  - m_Path: Curtain_1_lambert3_0
+    m_Weight: 1
+  - m_Path: Curtain_2_lambert3_0
+    m_Weight: 1
+  - m_Path: Cylinder.004
+    m_Weight: 1
+  - m_Path: Cylinder.005
+    m_Weight: 1
+  - m_Path: Cylinder.006
+    m_Weight: 1
+  - m_Path: Cylinder.007
+    m_Weight: 1
+  - m_Path: Cylinder.008
+    m_Weight: 1
+  - m_Path: Cylinder.009
+    m_Weight: 1
+  - m_Path: Cylinder.010
+    m_Weight: 1
+  - m_Path: Cylinder.011
+    m_Weight: 1
+  - m_Path: Cylinder.012
+    m_Weight: 1
+  - m_Path: Cylinder.013
+    m_Weight: 1
+  - m_Path: Cylinder.014
+    m_Weight: 1
+  - m_Path: Cylinder.015
+    m_Weight: 1
+  - m_Path: Cylinder.016
+    m_Weight: 1
+  - m_Path: Cylinder.017
+    m_Weight: 1
+  - m_Path: Cylinder09
+    m_Weight: 1
+  - m_Path: Cylinder18
+    m_Weight: 1
+  - m_Path: Cylinder19
+    m_Weight: 1
+  - m_Path: Cylinder23
+    m_Weight: 1
+  - m_Path: Cylinder24
+    m_Weight: 1
+  - m_Path: Cylinder26
+    m_Weight: 1
+  - m_Path: Cylinder27
+    m_Weight: 1
+  - m_Path: Cylinder28
+    m_Weight: 1
+  - m_Path: Cylinder29
+    m_Weight: 1
+  - m_Path: Cylinder31
+    m_Weight: 1
+  - m_Path: Cylinder32
+    m_Weight: 1
+  - m_Path: Cylinder33
+    m_Weight: 1
+  - m_Path: Cylinder35
+    m_Weight: 1
+  - m_Path: Cylinder36
+    m_Weight: 1
+  - m_Path: Cylinder38
+    m_Weight: 1
+  - m_Path: Cylinder41
+    m_Weight: 1
+  - m_Path: doorAnd_win:DASTGIRE
+    m_Weight: 1
+  - m_Path: doorAnd_win:DOOR
+    m_Weight: 1
+  - m_Path: doorAnd_win:FRAME
+    m_Weight: 1
+  - m_Path: floor
+    m_Weight: 1
+  - m_Path: hospital_cabinet2:Shelf1
+    m_Weight: 1
+  - m_Path: hospital_cabinet2:Shelf2
+    m_Weight: 1
+  - m_Path: hospital_cabinet2:Shelf3
+    m_Weight: 1
+  - m_Path: hospital_cabinet2:Shelf4
+    m_Weight: 1
+  - m_Path: hospital_cabinet2:Shelf5
+    m_Weight: 1
+  - m_Path: hospital_cabinet2:Shelf6
+    m_Weight: 1
+  - m_Path: hospital_cabinet2:Shelf7
+    m_Weight: 1
+  - m_Path: hospital_cabinet2:Shelf10
+    m_Weight: 1
+  - m_Path: hospital_cabinet2:Shelf11
+    m_Weight: 1
+  - m_Path: hospital_cabinet2:Shelf28
+    m_Weight: 1
+  - m_Path: hospital_cabinet2:Shelf31
+    m_Weight: 1
+  - m_Path: hospital_cabinet2:Shelf32
+    m_Weight: 1
+  - m_Path: hospital_cabinet2:Shelf33
+    m_Weight: 1
+  - m_Path: hospital_cabinet2:Shelf34
+    m_Weight: 1
+  - m_Path: lab3.011
+    m_Weight: 1
+  - m_Path: lab3.012
+    m_Weight: 1
+  - m_Path: lab9.003
+    m_Weight: 1
+  - m_Path: lab9.004
+    m_Weight: 1
+  - m_Path: lab11.004
+    m_Weight: 1
+  - m_Path: lab11.005
+    m_Weight: 1
+  - m_Path: lab22.003
+    m_Weight: 1
+  - m_Path: lab22.004
+    m_Weight: 1
+  - m_Path: lab23.002
+    m_Weight: 1
+  - m_Path: lab23.003
+    m_Weight: 1
+  - m_Path: lab24.001
+    m_Weight: 1
+  - m_Path: lab24.002
+    m_Weight: 1
+  - m_Path: lab25.001
+    m_Weight: 1
+  - m_Path: lab25.002
+    m_Weight: 1
+  - m_Path: lab26.001
+    m_Weight: 1
+  - m_Path: lab26.002
+    m_Weight: 1
+  - m_Path: Lap_tools:ampo1
+    m_Weight: 1
+  - m_Path: Lap_tools:ampo2
+    m_Weight: 1
+  - m_Path: Lap_tools:ampo3
+    m_Weight: 1
+  - m_Path: Lap_tools:ampo4
+    m_Weight: 1
+  - m_Path: Lap_tools:ampo5
+    m_Weight: 1
+  - m_Path: Lap_tools:ampo6
+    m_Weight: 1
+  - m_Path: Lap_tools:nurbsToPoly7
+    m_Weight: 1
+  - m_Path: light4.001
+    m_Weight: 1
+  - m_Path: light4.002
+    m_Weight: 1
+  - m_Path: Line01
+    m_Weight: 1
+  - m_Path: Line03
+    m_Weight: 1
+  - m_Path: Line05
+    m_Weight: 1
+  - m_Path: Line07
+    m_Weight: 1
+  - m_Path: Line08
+    m_Weight: 1
+  - m_Path: Line09
+    m_Weight: 1
+  - m_Path: Mesh04
+    m_Weight: 1
+  - m_Path: Modulos_1
+    m_Weight: 1
+  - m_Path: MonitorKnob
+    m_Weight: 1
+  - m_Path: MonitorScreen
+    m_Weight: 1
+  - m_Path: NurbsPath
+    m_Weight: 1
+  - m_Path: NurbsPath.001
+    m_Weight: 1
+  - m_Path: NurbsPath.002
+    m_Weight: 1
+  - m_Path: nurbsToPoly1.005
+    m_Weight: 1
+  - m_Path: nurbsToPoly1.006
+    m_Weight: 1
+  - m_Path: nurbsToPoly1.007
+    m_Weight: 1
+  - m_Path: nurbsToPoly1.009
+    m_Weight: 1
+  - m_Path: nurbsToPoly1.013
+    m_Weight: 1
+  - m_Path: nurbsToPoly11
+    m_Weight: 1
+  - m_Path: nurbsToPoly11.001
+    m_Weight: 1
+  - m_Path: nurbsToPoly12
+    m_Weight: 1
+  - m_Path: nurbsToPoly12.001
+    m_Weight: 1
+  - m_Path: nurbsToPoly13
+    m_Weight: 1
+  - m_Path: nurbsToPoly13.001
+    m_Weight: 1
+  - m_Path: nurbsToPoly14
+    m_Weight: 1
+  - m_Path: nurbsToPoly14.001
+    m_Weight: 1
+  - m_Path: nurbsToPoly15
+    m_Weight: 1
+  - m_Path: nurbsToPoly15.001
+    m_Weight: 1
+  - m_Path: nurbsToPoly16
+    m_Weight: 1
+  - m_Path: nurbsToPoly16.001
+    m_Weight: 1
+  - m_Path: Object_2
+    m_Weight: 1
+  - m_Path: Object_2.001
+    m_Weight: 1
+  - m_Path: Object_2.002
+    m_Weight: 1
+  - m_Path: Object_2.003
+    m_Weight: 1
+  - m_Path: Object_3
+    m_Weight: 1
+  - m_Path: Object_3.001
+    m_Weight: 0
+  - m_Path: Object_3.001/_rootJoint
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Hips_02
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Hips_02/LeftUpLeg_03
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Hips_02/LeftUpLeg_03/LeftUpLegRoll_04
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Hips_02/LeftUpLeg_03/LeftUpLegRoll_04/LeftLeg_05
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Hips_02/LeftUpLeg_03/LeftUpLegRoll_04/LeftLeg_05/LeftLegRoll_06
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Hips_02/LeftUpLeg_03/LeftUpLegRoll_04/LeftLeg_05/LeftLegRoll_06/LeftFoot_07
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Hips_02/LeftUpLeg_03/LeftUpLegRoll_04/LeftLeg_05/LeftLegRoll_06/LeftFoot_07/LeftToeBase_08
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Hips_02/RightUpLeg_09
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Hips_02/RightUpLeg_09/RightUpLegRoll_010
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Hips_02/RightUpLeg_09/RightUpLegRoll_010/RightLeg_011
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Hips_02/RightUpLeg_09/RightUpLegRoll_010/RightLeg_011/RightLegRoll_012
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Hips_02/RightUpLeg_09/RightUpLegRoll_010/RightLeg_011/RightLegRoll_012/RightFoot_013
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Hips_02/RightUpLeg_09/RightUpLegRoll_010/RightLeg_011/RightLegRoll_012/RightFoot_013/RightToeBase_014
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Hair03_018
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Hair03_018/Hair04_019
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftElbow_024
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025/LeftHand_026
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025/LeftHand_026/LeftHandIndex1_027
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025/LeftHand_026/LeftHandIndex1_027/LeftHandIndex2_00
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025/LeftHand_026/LeftHandIndex1_027/LeftHandIndex2_00/LeftHandIndex3_028
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025/LeftHand_026/LeftHandMiddle1_029
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025/LeftHand_026/LeftHandMiddle1_029/LeftHandMiddle2_030
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025/LeftHand_026/LeftHandMiddle1_029/LeftHandMiddle2_030/LeftHandMiddle3_031
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025/LeftHand_026/LeftHandPinky1_032
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025/LeftHand_026/LeftHandPinky1_032/LeftHandPinky2_033
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025/LeftHand_026/LeftHandPinky1_032/LeftHandPinky2_033/LeftHandPinky3_034
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025/LeftHand_026/LeftHandRing1_035
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025/LeftHand_026/LeftHandRing1_035/LeftHandRing2_036
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025/LeftHand_026/LeftHandRing1_035/LeftHandRing2_036/LeftHandRing3_037
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025/LeftHand_026/LeftHandThumb1_038
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025/LeftHand_026/LeftHandThumb1_038/LeftHandThumb2_039
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/LeftShoulder_020/HOMRBO2/LeftArmRoll_022/LeftForearm_023/LeftForearmRoll_025/LeftHand_026/LeftHandThumb1_038/LeftHandThumb2_039/LeftHandThumb3_040
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Hair02_042
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Brow_L_Inner_045
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Brow_L_Mid_046
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Brow_L_Outer_047
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Brow_R_Inner_048
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Brow_R_Mid_049
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Brow_R_Outer_050
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Cheek_L_Laugh_051
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Cheek_L_Lwr_052
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Cheek_L_Uppr_053
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Cheek_R_Laugh_054
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Cheek_R_Lwr_055
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Cheek_R_Uppr_056
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Eyeball_L_057
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Eyeball_R_058
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Eyelid_L_Lwr_059
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Eyelid_L_Uppr_060
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Eyelid_R_Lwr_061
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Eyelid_R_Uppr_062
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Jaw_063
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Jaw_063/Lip_L_Lwr_064
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Jaw_063/Lip_Mid_Lwr_065
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Jaw_063/Lip_R_Lwr_066
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Jaw_063/Tongue_1_067
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Jaw_063/Tongue_1_067/Tongue_2_068
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Lip_L_Corner_069
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Lip_L_Uppr_070
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Lip_Mid_Uppr_071
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Lip_R_Corner_072
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Lip_R_Uppr_073
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Nose_L_Sneer_074
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Face_Root_044/Nose_R_Sneer_075
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/Neck_041/Head_043/Hair01_076
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightElbow_081
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082/RightHand_083
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082/RightHand_083/RightHandIndex1_084
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082/RightHand_083/RightHandIndex1_084/RightHandIndex2_085
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082/RightHand_083/RightHandIndex1_084/RightHandIndex2_085/RightHandIndex3_086
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082/RightHand_083/RightHandMiddle1_087
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082/RightHand_083/RightHandMiddle1_087/RightHandMiddle2_088
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082/RightHand_083/RightHandMiddle1_087/RightHandMiddle2_088/RightHandMiddle3_089
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082/RightHand_083/RightHandPinky1_090
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082/RightHand_083/RightHandPinky1_090/RightHandPinky2_091
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082/RightHand_083/RightHandPinky1_090/RightHandPinky2_091/RightHandPinky3_092
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082/RightHand_083/RightHandRing1_093
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082/RightHand_083/RightHandRing1_093/RightHandRing2_094
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082/RightHand_083/RightHandRing1_093/RightHandRing2_094/RightHandRing3_095
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082/RightHand_083/RightHandThumb1_096
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082/RightHand_083/RightHandThumb1_096/RightHandThumb2_097
+    m_Weight: 1
+  - m_Path: Object_3.001/_rootJoint/Reference_01/Spine_015/Spine1_016/Spine2_017/RightShoulder_077/HOMRO1/RightArmRoll_079/RightForearm_080/RightForearmRoll_082/RightHand_083/RightHandThumb1_096/RightHandThumb2_097/RightHandThumb3_098
+    m_Weight: 1
+  - m_Path: Object_3.002
+    m_Weight: 1
+  - m_Path: Object_3.003
+    m_Weight: 1
+  - m_Path: Object_3.004
+    m_Weight: 1
+  - m_Path: Object_4
+    m_Weight: 1
+  - m_Path: Object_4.001
+    m_Weight: 1
+  - m_Path: Object_4.002
+    m_Weight: 1
+  - m_Path: Object_4.003
+    m_Weight: 1
+  - m_Path: Object_5
+    m_Weight: 1
+  - m_Path: Object_5.002
+    m_Weight: 1
+  - m_Path: Object_5.003
+    m_Weight: 1
+  - m_Path: Object_5.004
+    m_Weight: 1
+  - m_Path: Object_6
+    m_Weight: 1
+  - m_Path: Object_6.001
+    m_Weight: 1
+  - m_Path: Object_6.002
+    m_Weight: 1
+  - m_Path: Object_6.003
+    m_Weight: 1
+  - m_Path: Object_6.004
+    m_Weight: 1
+  - m_Path: Object_7
+    m_Weight: 1
+  - m_Path: Object_7.002
+    m_Weight: 1
+  - m_Path: Object_7.003
+    m_Weight: 1
+  - m_Path: Object_7.004
+    m_Weight: 1
+  - m_Path: Object_8
+    m_Weight: 1
+  - m_Path: Object_8.001
+    m_Weight: 1
+  - m_Path: Object_8.002
+    m_Weight: 1
+  - m_Path: Object_8.003
+    m_Weight: 1
+  - m_Path: Object_8.004
+    m_Weight: 1
+  - m_Path: Object_9
+    m_Weight: 1
+  - m_Path: Object_9.002
+    m_Weight: 1
+  - m_Path: Object_9.003
+    m_Weight: 1
+  - m_Path: Object_9.004
+    m_Weight: 1
+  - m_Path: Object_10
+    m_Weight: 1
+  - m_Path: Object_10.001
+    m_Weight: 1
+  - m_Path: Object_10.002
+    m_Weight: 1
+  - m_Path: Object_10.003
+    m_Weight: 1
+  - m_Path: Object_10.004
+    m_Weight: 1
+  - m_Path: Object_11
+    m_Weight: 1
+  - m_Path: Object_11.002
+    m_Weight: 1
+  - m_Path: Object_11.003
+    m_Weight: 1
+  - m_Path: Object_11.004
+    m_Weight: 1
+  - m_Path: Object_12.001
+    m_Weight: 1
+  - m_Path: Object_14.001
+    m_Weight: 1
+  - m_Path: Orange_juice:juice
+    m_Weight: 1
+  - m_Path: Orange_juice:paper_cup
+    m_Weight: 1
+  - m_Path: Orange_juice:straw
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd3.005
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd3.006
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd3.007
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd3.009
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd3.012
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd4
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd4.001
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd5
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd5.001
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd6
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd6.001
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd7
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd7.001
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd8
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd8.001
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd9
+    m_Weight: 1
+  - m_Path: pasted__polyToSubd9.001
+    m_Weight: 1
+  - m_Path: pasted__pPipe1.005
+    m_Weight: 1
+  - m_Path: pasted__pPipe1.006
+    m_Weight: 1
+  - m_Path: pasted__pPipe1.007
+    m_Weight: 1
+  - m_Path: pasted__pPipe1.009
+    m_Weight: 1
+  - m_Path: pasted__pPipe1.012
+    m_Weight: 1
+  - m_Path: pasted__pPipe2
+    m_Weight: 1
+  - m_Path: pasted__pPipe2.001
+    m_Weight: 1
+  - m_Path: pasted__pPipe3
+    m_Weight: 1
+  - m_Path: pasted__pPipe3.001
+    m_Weight: 1
+  - m_Path: pasted__pPipe4
+    m_Weight: 1
+  - m_Path: pasted__pPipe4.001
+    m_Weight: 1
+  - m_Path: pasted__pPipe5
+    m_Weight: 1
+  - m_Path: pasted__pPipe5.001
+    m_Weight: 1
+  - m_Path: pasted__pPipe6
+    m_Weight: 1
+  - m_Path: pasted__pPipe6.001
+    m_Weight: 1
+  - m_Path: pasted__pPipe7
+    m_Weight: 1
+  - m_Path: pasted__pPipe7.001
+    m_Weight: 1
+  - m_Path: pillow1
+    m_Weight: 1
+  - m_Path: Plane
+    m_Weight: 1
+  - m_Path: Plane.001
+    m_Weight: 1
+  - m_Path: Rectangle05
+    m_Weight: 1
+  - m_Path: Ring1_lambert2_0
+    m_Weight: 1
+  - m_Path: Ring2_lambert2_0
+    m_Weight: 1
+  - m_Path: Ring3_lambert2_0
+    m_Weight: 1
+  - m_Path: Ring4_lambert2_0
+    m_Weight: 1
+  - m_Path: Ring5_lambert2_0
+    m_Weight: 1
+  - m_Path: Ring_lambert2_0
+    m_Weight: 1
+  - m_Path: Rod_Back_1_lambert2_0
+    m_Weight: 1
+  - m_Path: Rod_Back_2_lambert2_0
+    m_Weight: 1
+  - m_Path: Rod_End_1_lambert2_0
+    m_Weight: 1
+  - m_Path: Rod_End_2_lambert2_0
+    m_Weight: 1
+  - m_Path: Rod_lambert2_0
+    m_Weight: 1
+  - m_Path: screen_with_curtain1
+    m_Weight: 1
+  - m_Path: screen_with_curtain1.001
+    m_Weight: 1
+  - m_Path: screen_with_curtain2
+    m_Weight: 1
+  - m_Path: screen_with_curtain2.001
+    m_Weight: 1
+  - m_Path: screen_with_curtain3
+    m_Weight: 1
+  - m_Path: screen_with_curtain3.001
+    m_Weight: 1
+  - m_Path: screen_with_curtain4
+    m_Weight: 1
+  - m_Path: screen_with_curtain4.001
+    m_Weight: 1
+  - m_Path: screen_with_curtain5
+    m_Weight: 1
+  - m_Path: screen_with_curtain5.001
+    m_Weight: 1
+  - m_Path: screen_with_curtain6
+    m_Weight: 1
+  - m_Path: screen_with_curtain6.001
+    m_Weight: 1
+  - m_Path: screen_with_curtain7
+    m_Weight: 1
+  - m_Path: screen_with_curtain7.001
+    m_Weight: 1
+  - m_Path: screen_with_curtain8
+    m_Weight: 1
+  - m_Path: screen_with_curtain8.001
+    m_Weight: 1
+  - m_Path: serum17
+    m_Weight: 1
+  - m_Path: Shelf28
+    m_Weight: 1
+  - m_Path: Shelf28.001
+    m_Weight: 1
+  - m_Path: Shelf31
+    m_Weight: 1
+  - m_Path: Shelf31.001
+    m_Weight: 1
+  - m_Path: Shelf32
+    m_Weight: 1
+  - m_Path: Shelf32.001
+    m_Weight: 1
+  - m_Path: Shelf33
+    m_Weight: 1
+  - m_Path: Shelf33.001
+    m_Weight: 1
+  - m_Path: Shelf34
+    m_Weight: 1
+  - m_Path: Shelf34.001
+    m_Weight: 1
+  - m_Path: Soporte
+    m_Weight: 1
+  - m_Path: soup:nurbsToPoly1
+    m_Weight: 1
+  - m_Path: soup:nurbsToPoly3
+    m_Weight: 1
+  - m_Path: soup:pCube1
+    m_Weight: 1
+  - m_Path: Sphere07
+    m_Weight: 1
+  - m_Path: Sphere08
+    m_Weight: 1
+  - m_Path: Sphere09
+    m_Weight: 1
+  - m_Path: Sphere10
+    m_Weight: 1
+  - m_Path: Tubos_1
+    m_Weight: 1
+  - m_Path: Via_1 plastico
+    m_Weight: 1
+  - m_Path: Via_1.sangre
+    m_Weight: 1
+  - m_Path: Via_2 sangre
+    m_Weight: 1
+  - m_Path: Via_plastico
+    m_Weight: 1
+  - m_Path: Via_sangre
+    m_Weight: 1
+  - m_Path: wall
+    m_Weight: 1
+  - m_Path: wall1
+    m_Weight: 1
+  - m_Path: wall1.001
+    m_Weight: 1
+  - m_Path: wall2
+    m_Weight: 1
+  - m_Path: wall2.001
+    m_Weight: 1
+  - m_Path: Window_Frame1_blinn1_0
+    m_Weight: 1
+  - m_Path: Window_Frame2_lambert7_0
+    m_Weight: 1
+  - m_Path: Window_Frame3_lambert7_0
+    m_Weight: 1
+  - m_Path: Window_Frame4_lambert7_0
+    m_Weight: 1
+  - m_Path: Window_Frame5_lambert7_0
+    m_Weight: 1
+  - m_Path: Window_Frame6_lambert7_0
+    m_Weight: 1
+  - m_Path: Window_Frame7_lambert7_0
+    m_Weight: 1
+  - m_Path: Window_Frame8_blinn1_0
+    m_Weight: 1
+  - m_Path: Window_Frame9_blinn1_0
+    m_Weight: 1
+  - m_Path: Window_Frame10_blinn1_0
+    m_Weight: 1
+  - m_Path: Window_Frame11_blinn1_0
+    m_Weight: 1
+  - m_Path: Window_Frame_lambert7_0
+    m_Weight: 1
