@@ -1948,8 +1948,9 @@ GameObject:
   m_Component:
   - component: {fileID: 76417758}
   - component: {fileID: 76417759}
+  - component: {fileID: 76417760}
   m_Layer: 3
-  m_Name: Grafico_ecg (2)
+  m_Name: Grafico_respiracion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1971,7 +1972,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -5, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -26.2}
+  m_AnchoredPosition: {x: 0, y: -9.5}
   m_SizeDelta: {x: 130, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &76417759
@@ -2027,7 +2028,7 @@ MonoBehaviour:
     verticalViewSize: 2
     verticalViewOrigin: -1
     mSerializedData:
-    - Name: ECG
+    - Name: Respiracion
       InitialData: []
       IsBezierCurve: 0
       SegmentsPerCurve: 0
@@ -2036,7 +2037,7 @@ MonoBehaviour:
       PointHoverPrefab: {fileID: 0}
       MaskPoints: 0
       LinePrefab: {fileID: 0}
-      Material: {fileID: 2100000, guid: 8896d3666eea3f14bbf59fc40b44537e, type: 2}
+      Material: {fileID: 2100000, guid: 7cfb9df29d8b8eb438164ba44b419fe2, type: 2}
       LineTiling:
         EnableTiling: 0
         TileFactor: 0.01
@@ -2062,6 +2063,22 @@ MonoBehaviour:
     top: 0
     right: 0
     bottom: 0
+--- !u!114 &76417760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76417757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0dd9000de863a44a6f92f13dc0a999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerDatos: {fileID: 1730609286}
+  grafico: {fileID: 76417759}
+  canalDeDatos: 3
+  nombreCategoria: Respiracion
 --- !u!1 &78709317
 GameObject:
   m_ObjectHideFlags: 0
@@ -9442,6 +9459,7 @@ GameObject:
   - component: {fileID: 433748190}
   - component: {fileID: 433748192}
   - component: {fileID: 433748191}
+  - component: {fileID: 433748193}
   m_Layer: 3
   m_Name: Seccion_Parametros
   m_TagString: Untagged
@@ -9519,6 +9537,29 @@ MonoBehaviour:
   m_FlexibleWidth: 0.3
   m_FlexibleHeight: 1
   m_LayoutPriority: 1
+--- !u!114 &433748193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433748189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5cf15ee966c0848bc0043e65a4bdd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBPM: {fileID: 209671925}
+  textOxigeno: {fileID: 2105165854}
+  textPresion: {fileID: 795254407}
+  textRespiracion: {fileID: 499582562}
+  textTemperatura: {fileID: 584631174}
+  baseBPM: 80
+  baseOxigeno: 98
+  baseSistolica: 120
+  baseDiastolica: 80
+  baseRespiracion: 16
+  baseTemperatura: 36.5
 --- !u!1 &440080221
 GameObject:
   m_ObjectHideFlags: 0
@@ -16362,6 +16403,7 @@ GameObject:
   m_Component:
   - component: {fileID: 580101159}
   - component: {fileID: 580101160}
+  - component: {fileID: 580101161}
   m_Layer: 3
   m_Name: Grafico_ppg
   m_TagString: Untagged
@@ -16385,7 +16427,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -5, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -175}
+  m_AnchoredPosition: {x: 0, y: 138.6}
   m_SizeDelta: {x: 130, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &580101160
@@ -16476,6 +16518,22 @@ MonoBehaviour:
     top: 0
     right: 0
     bottom: 0
+--- !u!114 &580101161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580101158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0dd9000de863a44a6f92f13dc0a999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerDatos: {fileID: 1730609286}
+  grafico: {fileID: 580101160}
+  canalDeDatos: 1
+  nombreCategoria: PPG
 --- !u!1 &584631173
 GameObject:
   m_ObjectHideFlags: 0
@@ -32632,8 +32690,8 @@ Transform:
   m_GameObject: {fileID: 1425210338}
   serializedVersion: 2
   m_LocalRotation: {x: 0.030843573, y: -0.7064338, z: -0.030843573, w: 0.7064338}
-  m_LocalPosition: {x: 1028.3013, y: 91.69918, z: 5832.9604}
-  m_LocalScale: {x: 1000.0001, y: 1000.0001, z: 1000}
+  m_LocalPosition: {x: 1028.301, y: 91.6996, z: 5832.9624}
+  m_LocalScale: {x: 999.99994, y: 999.99994, z: 1000.00024}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1730609285}
@@ -32645,7 +32703,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425210338}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 139fbe1738964cb46b9be65dbbfad9c7, type: 3}
   m_Name: 
@@ -33441,6 +33499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1442421510}
   - component: {fileID: 1442421511}
+  - component: {fileID: 1442421512}
   m_Layer: 3
   m_Name: Grafico_ecg
   m_TagString: Untagged
@@ -33464,7 +33523,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -5, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -26.2}
+  m_AnchoredPosition: {x: 0, y: -261.67}
   m_SizeDelta: {x: 130, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1442421511
@@ -33555,6 +33614,22 @@ MonoBehaviour:
     top: 0
     right: 0
     bottom: 0
+--- !u!114 &1442421512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442421509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0dd9000de863a44a6f92f13dc0a999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerDatos: {fileID: 1730609286}
+  grafico: {fileID: 1442421511}
+  canalDeDatos: 0
+  nombreCategoria: ECG
 --- !u!1 &1442512272
 GameObject:
   m_ObjectHideFlags: 0
@@ -33696,7 +33771,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1451617518}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b26647b8592f73441956a769c3e30d35, type: 3}
   m_Name: 
@@ -37475,7 +37550,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1635458142}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c250e065e44fa2a40a64c17c3eb3c70a, type: 3}
   m_Name: 
@@ -39330,6 +39405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1730609285}
+  - component: {fileID: 1730609286}
   m_Layer: 3
   m_Name: Datos
   m_TagString: Untagged
@@ -39352,8 +39428,8 @@ RectTransform:
   - {fileID: 608813573}
   - {fileID: 1635458143}
   - {fileID: 1451617519}
-  - {fileID: 1425210339}
   - {fileID: 575563947}
+  - {fileID: 1425210339}
   - {fileID: 1449281626}
   m_Father: {fileID: 59796467}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -39362,6 +39438,23 @@ RectTransform:
   m_AnchoredPosition: {x: 5.23943, y: 3.3601384}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1730609286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730609284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5c31ecfe0a9d448a340d390ec51863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  archivoCSV: {fileID: 4900000, guid: 3764c1a1788afc9448d76f3b70a11d0b, type: 3}
+  frecuenciaCardiaca: []
+  presionArterial: []
+  frecuenciaRespiratoria: []
+  saturacionOxigeno: []
 --- !u!1 &1734564044
 GameObject:
   m_ObjectHideFlags: 0
@@ -43325,8 +43418,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1928799027}
   - component: {fileID: 1928799028}
+  - component: {fileID: 1928799029}
   m_Layer: 3
-  m_Name: Grafico_ecg (1)
+  m_Name: Grafico_presion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43348,7 +43442,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -5, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -26.2}
+  m_AnchoredPosition: {x: 0, y: -99.01}
   m_SizeDelta: {x: 130, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1928799028
@@ -43404,7 +43498,7 @@ MonoBehaviour:
     verticalViewSize: 2
     verticalViewOrigin: -1
     mSerializedData:
-    - Name: ECG
+    - Name: PresionArterial
       InitialData: []
       IsBezierCurve: 0
       SegmentsPerCurve: 0
@@ -43413,7 +43507,7 @@ MonoBehaviour:
       PointHoverPrefab: {fileID: 0}
       MaskPoints: 0
       LinePrefab: {fileID: 0}
-      Material: {fileID: 2100000, guid: 8896d3666eea3f14bbf59fc40b44537e, type: 2}
+      Material: {fileID: 2100000, guid: 5827abca67a0f83489011d0ca910d844, type: 2}
       LineTiling:
         EnableTiling: 0
         TileFactor: 0.01
@@ -43439,6 +43533,22 @@ MonoBehaviour:
     top: 0
     right: 0
     bottom: 0
+--- !u!114 &1928799029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928799026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0dd9000de863a44a6f92f13dc0a999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerDatos: {fileID: 1730609286}
+  grafico: {fileID: 1928799028}
+  canalDeDatos: 2
+  nombreCategoria: Presion Arterial
 --- !u!1 &1928930339
 GameObject:
   m_ObjectHideFlags: 0
