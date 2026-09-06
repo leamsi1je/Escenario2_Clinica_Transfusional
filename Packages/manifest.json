@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.meta.xr.sdk.all": "83.0.4",
+    "com.meta.xr.sdk.all": "201.0.0",
     "com.meta.xr.sdk.haptics": "83.0.4",
     "com.meta.xr.sdk.interaction": "83.0.4",
     "com.meta.xr.sdk.interaction.ovr": "83.0.4",
