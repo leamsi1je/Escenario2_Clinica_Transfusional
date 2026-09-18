@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Escenario4_Clinica_Transfusional.sln"
+    "dotnet.defaultSolution": "Escenario2_Clinica_Transfusional.sln"
 }
