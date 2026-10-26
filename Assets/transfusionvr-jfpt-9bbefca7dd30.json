@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "transfusionvr-jfpt",
+  "private_key_id": "9bbefca7dd306b02377af26e457697660f5047e1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC/QsWaEXRz9uHB\n3e3br2sIYnn1rex17BuY9gkG4e37yQcIvi94xwEYFSg2qu29UV1MlXARl2wy2xp/\nPCUE0bkc2LN1KUFVCRrF1FgfVT1F6heZMEbW5qe9DwPuYh9nBtn9BPPhCq0jgwi+\nlJzRoi94suv+tX9FWdNa1pw3Tt6HfbAsze0rQYB34aHi20sJmCU0xeEYjBfvCw02\nkz8iRPIEuId4brB430CFy9uf6DnmUXgiFMjuTNEZXWWpaS4bYss/dfXbDVWLVITh\ntt/ownvKQJ4Dn79B8wZY9u0rH22bOPMcGIXlygyls//KsJEkAyhILvkh60+H41pi\n0vcL/d6bAgMBAAECggEALEcE//nyf7Yz5XG/UxB1Mue5XEr7ZwFWEj9DL7i2I4gS\nfM+qpcdMVYrwWFeR2jYv5z7hRvFLNyrKI5KE72yt8iOoyALZARqufAYAsKBHIxxi\ngjBO9glH49jKDDHjGzLW3GB9JSgXlRUMvTIia9WkL8kcIUdbQ27cIzdzysoTckIc\nPCpLBv+Av8K8KU6Ev8yjQETekxfxdihsTYSuo52e5hom+Y/UId6TEXXbMPBfZqlp\n4Vh7/lBdknvpbOcGBCtD1wzBcJGO3Y8j/McEc6wdTgFYOMuUgQsO2Zj2eXk78Kpw\nA5jwJsIzqVaaty4F3BhBxay2z32O75/ey3tfGSejoQKBgQDjuAOnCGFqDz+wzf38\nihgQoGNc9zx61u/F75dL8fNP1/oBUsJDnsGoM8yAbSEnOD57w1ga1qyLs3QbtRKf\nVIedY0yVtF2/gwrs1s0C1Yrdhra7J/TbYnG6SrCFbTUOqqZ9592U6GIPQlp5yUMN\n7lJttWQ1dujcwOwuQfjQeRARFwKBgQDXA6EvPAHn2eTlVkmHwqHXwNxK5Zrb07Rg\nwbyjnBm1Aosk09M0d4fQEZgDi6xFyczIwlEBqyi+TAlZdstFW7k66h9g3waGufZI\nIfICa7DRlwzI1lbFsXt+mMX3H3KMILjIQNXXaky/16tBmvYZrs3aqthSeq20Oafl\nIwr4zhLpHQKBgCXbPogzJXarSExNQm8MSgnhkAMxetV1C/Fc7ksK0wcwAXjc2DzD\nlLAwxEuJWNybRg/vHqN/krm6wI+mn4zrUYxBqMaucHNZBqTu5LAW7fn73j7o2pTq\nHbv5lLTpvctNZVZDCJwrsbmVr1LVuZcESqHAaQNWXEnurJTYFNQbfCdLAoGBAIj6\nF/p2eSRSbP8pjGh/twkzJWRVh+VZpoUph1qXvMzTFP/eLqQzLgOA4d4IYjSHjf2r\nxV2Rw8APwrkK9A54k7WTp2/YRVkZKWvkrD+ciaXMW+mqmtcQ7YLGIv//OcNJqU5x\n94lngAOLit+dsADGmwAebPeGjhjNzkcsnvXImsWFAoGBAKzoAqzPt3GE5pIbLpMS\np3ZmvE5so88TNqUetwqV5Zw6olef7s0J4zN9brk4ZBq9HmRYOTpVROQZFAFoRr/W\nN0+gNFxOMa5SRIxQsZWHe+RStcDvJ7HX0KVKK7rBgQsa/mLI7RPUCtZ6cVFRhi5v\nARtGw/qJe17ndbH+XVrj4Z0p\n-----END PRIVATE KEY-----\n",
+  "client_email": "unity-dialogflow@transfusionvr-jfpt.iam.gserviceaccount.com",
+  "client_id": "111810089960158271381",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/unity-dialogflow%40transfusionvr-jfpt.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
