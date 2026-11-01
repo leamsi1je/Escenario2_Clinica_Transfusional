@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef237c2835d9428bbecb96b5a0e0f319, type: 3}
+  m_Name: RecursosInfusion
+  m_EditorClassIdentifier:
+  sangreOriginal:
+  - ruta: Tubos_1/Sangre
+    materiales:
+    - {fileID: 2100000, guid: ffb15b74dabc55d4ebdc50fcb220c09d, type: 2}
+  - ruta: Modulos_1
+    materiales:
+    - {fileID: 2100000, guid: 52c37967d1bbb4c448e1f0cc18bfce7d, type: 2}
+    - {fileID: 2100000, guid: 608029a9902e234468abdafd5f08a9af, type: 2}
+  - ruta: Via_2 sangre
+    materiales:
+    - {fileID: 2100000, guid: ffb15b74dabc55d4ebdc50fcb220c09d, type: 2}
+  - ruta: Via_sangre
+    materiales:
+    - {fileID: 2100000, guid: e628f6d4822c38e438f4681dec940359, type: 2}
+  - ruta: Via_1 plastico
+    materiales:
+    - {fileID: 2100000, guid: e628f6d4822c38e438f4681dec940359, type: 2}
+  - ruta: Soporte
+    materiales:
+    - {fileID: 2100000, guid: c40f37154b9569647b80e041a40f45ed, type: 2}
+  - ruta: Via_plastico
+    materiales:
+    - {fileID: 2100000, guid: e628f6d4822c38e438f4681dec940359, type: 2}
+  - ruta: Via_1.sangre
+    materiales:
+    - {fileID: 2100000, guid: ffb15b74dabc55d4ebdc50fcb220c09d, type: 2}
+  plasticoNaCl: {fileID: 2100000, guid: 6e43c40107034e3a91b8824d0bb09d07, type: 2}
+  sangre: {fileID: 2100000, guid: ffb15b74dabc55d4ebdc50fcb220c09d, type: 2}
+

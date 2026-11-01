@@ -7,6 +7,9 @@ public class AlternarParantes : MonoBehaviour
     public GameObject parantePlasma;
     public GameObject paranteSangre;
 
+    [Header("Infusión integrada (opcional)")]
+    public ControladorInfusionVisual infusionIntegrada;
+
     [Header("Estado inicial")]
     public bool mostrarPlasmaAlInicio = true;
 
@@ -37,6 +40,7 @@ public class AlternarParantes : MonoBehaviour
         if (notificacion1 != null) escalaOriginalNotificacion1 = notificacion1.transform.localScale;
         if (notificacion2 != null) escalaOriginalNotificacion2 = notificacion2.transform.localScale;
 
+        if (infusionIntegrada != null) return;
         if (parantePlasma != null) parantePlasma.SetActive(mostrarPlasmaAlInicio);
         if (paranteSangre != null) paranteSangre.SetActive(!mostrarPlasmaAlInicio);
     }
@@ -61,6 +65,14 @@ public class AlternarParantes : MonoBehaviour
 
     public void AlternarObjetos()
     {
+        if (infusionIntegrada != null)
+        {
+            // ENVIAR conserva las notificaciones y sus otros callbacks.
+            // No constituye autorización clínica de cierre o apertura.
+            StopAllCoroutines();
+            StartCoroutine(SecuenciaNotificaciones());
+            return;
+        }
         bool plasmaActivo = parantePlasma.activeSelf;
 
         parantePlasma.SetActive(!plasmaActivo);

@@ -1,190 +1,354 @@
-using UnityEngine;
 using System.Collections;
+using System;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Events;
 
 public class ControladorReguladorTactil : MonoBehaviour
 {
     [Header("Límites de Movimiento (LOCAL Y)")]
-    [Tooltip("Distancia máxima que sube la rueda respecto al Cuerpo Blanco (Eje Y)")]
-    public float limiteSuperior = 0.05f; 
-    [Tooltip("Distancia máxima que baja la rueda respecto al Cuerpo Blanco (Eje Y)")]
-    public float limiteInferior = -0.05f; 
+    public float limiteSuperior = 0.05f;
+    public float limiteInferior = -0.05f;
 
     [Header("Configuración Táctil")]
-    [Tooltip("El Tag que debe tener tu dedo (o cubo) para mover la rueda")]
     public string tagDedo = "Hand";
+    public float limiteVelocidadAgarre = 0.5f;
+    public float velocidadRodillo = 8f;
 
-    [Header("Simulación de Fricción (Resbalón)")]
-    [Tooltip("Si mueves el dedo más rápido que esto, resbalará y no moverá la rueda. (Ej: 0.5)")]
-    public float limiteVelocidadAgarre = 0.5f; 
-    [Tooltip("Velocidad con la que la rueda persigue al dedo cuando vas lento (fuerza).")]
-    public float velocidadRodillo = 8f; 
-
-    [Header("Referencias de la Sangre y UI")]
+    [Header("Flujo")]
     public ParticleSystem sistemaGoteo;
-    private ParticleSystem.EmissionModule emisionGoteo;
-    public float tasaGoteoMaximo = 2f; 
+    public float tasaGoteoMaximo = 2f;
+    [Tooltip("El caso comienza con la sangre fluyendo.")]
+    public bool iniciarAbierto = true;
+    // Las instancias heredadas conservan su posición y tasa iniciales.
+    public bool inicializarFlujoAlIniciar;
+
+    [Header("Eventos para escenario y multijugador")]
+    public UnityEvent alCerrarRegulador = new UnityEvent();
+    public UnityEvent alAbrirRegulador = new UnityEvent();
+    public UnityEvent<float> alCambiarFlujo = new UnityEvent<float>();
+    // Solo procede de un desplazamiento táctil, nunca de Abrir/Cerrar por código.
+    public UnityEvent<float> alMovimientoManual = new UnityEvent<float>();
+
+    [Header("Notificación")]
     public GameObject panelNotificacion;
     public TextMeshProUGUI textoNotificacion;
     public float tiempoVisibleNotificacion = 3f;
-    
-    [Header("Configuración de Posición VR")]
+
+    [Header("Posición VR")]
     public float distanciaPanel = 0.8f;
-    public float alturaExtra = 0f; 
+    public float alturaExtra;
     public float velocidadSeguimiento = 5f;
 
-    private bool cerradoNotificado = false;
+    private ParticleSystem.EmissionModule emisionGoteo;
     private Vector3 posicionInicialLocal;
     private Transform camaraVR;
-    private Vector3 escalaOriginalPanel; 
-    
-    // Variables para calcular la velocidad del dedo
+    private Vector3 escalaOriginalPanel;
     private Collider dedoActual;
     private float ultimoYLocalDedo;
+    private bool flujoCerrado;
+    private bool inicializado;
+    private bool controlExterno;
+    private Func<bool> permitirMovimiento;
+    private Vector3 origenCerrado;
+    private Vector3 ultimoContacto;
+    private const float RecorridoManual = .05f;
+    private Quaternion rotacionInicialLocal;
+    private Rigidbody cuerpoManual;
 
-    void Start()
+    public float FlujoNormalizado { get; private set; }
+    public bool EstaCerrado => FlujoNormalizado <= 0.02f;
+
+    private void Start()
     {
+        Inicializar();
+        if (!controlExterno && inicializarFlujoAlIniciar) EstablecerFlujoNormalizado(iniciarAbierto ? 1f : 0f, false);
+    }
+
+    private void Inicializar()
+    {
+        if (inicializado) return;
+        inicializado = true;
         posicionInicialLocal = transform.localPosition;
-        
-        if (sistemaGoteo != null) emisionGoteo = sistemaGoteo.emission;
-        
-        if (panelNotificacion != null) 
+        rotacionInicialLocal = transform.localRotation;
+        cuerpoManual = GetComponent<Rigidbody>();
+
+        if (sistemaGoteo != null)
+            emisionGoteo = sistemaGoteo.emission;
+
+        if (panelNotificacion != null)
         {
             escalaOriginalPanel = panelNotificacion.transform.localScale;
             panelNotificacion.SetActive(false);
         }
-        
-        if (Camera.main != null) camaraVR = Camera.main.transform;
+
+        if (Camera.main != null)
+            camaraVR = Camera.main.transform;
+
     }
 
-    void Update()
+    public void ConfigurarControlManual(bool abierto, Func<bool> permiso)
     {
-        if (panelNotificacion != null && panelNotificacion.activeInHierarchy && camaraVR != null)
+        Inicializar();
+        if (!controlExterno)
+            origenCerrado = transform.parent.InverseTransformPoint(
+                transform.position - Vector3.up * (abierto ? RecorridoManual : 0f));
+        controlExterno = true;
+        if (cuerpoManual != null)
         {
-            Vector3 posicionDestino = camaraVR.position + (camaraVR.forward * distanciaPanel);
-            posicionDestino.y += alturaExtra; 
-            panelNotificacion.transform.position = Vector3.Lerp(panelNotificacion.transform.position, posicionDestino, Time.deltaTime * velocidadSeguimiento);
-            panelNotificacion.transform.LookAt(camaraVR);
-            panelNotificacion.transform.Rotate(0, 180, 0); 
+            cuerpoManual.useGravity = false;
+            cuerpoManual.isKinematic = true;
         }
+        permitirMovimiento = permiso;
+        enabled = true;
+        EstablecerFlujoNormalizado(abierto ? 1f : 0f, false);
     }
 
-    void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (dedoActual == null && other.CompareTag(tagDedo))
-        {
-            dedoActual = other; 
-            // Registramos la posición del dedo referenciada al espacio del chasis blanco
-            ultimoYLocalDedo = transform.parent.InverseTransformPoint(other.transform.position).y;
-        }
+        if (panelNotificacion == null ||
+            !panelNotificacion.activeInHierarchy ||
+            camaraVR == null)
+            return;
+
+        Vector3 destino = camaraVR.position + camaraVR.forward * distanciaPanel;
+        destino.y += alturaExtra;
+        panelNotificacion.transform.position = Vector3.Lerp(
+            panelNotificacion.transform.position,
+            destino,
+            Time.deltaTime * velocidadSeguimiento);
+        panelNotificacion.transform.LookAt(camaraVR);
+        panelNotificacion.transform.Rotate(0f, 180f, 0f);
     }
 
-    void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!isActiveAndEnabled || dedoActual != null || !EsMano(other) ||
+            (controlExterno && (permitirMovimiento == null || !permitirMovimiento()))) return;
+
+        dedoActual = other;
+        ultimoContacto = other.transform.position;
+        ultimoYLocalDedo =
+            transform.parent.InverseTransformPoint(other.transform.position).y;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        // Captura sin salto si la mano ya estaba en contacto al autorizar.
+        if (dedoActual == null) OnTriggerEnter(other);
+        if (!isActiveAndEnabled || other != dedoActual) return;
+        if (controlExterno)
+        {
+            if (permitirMovimiento == null || !permitirMovimiento()) { dedoActual = null; return; }
+            Vector3 contacto = other.transform.position;
+            float desplazamiento = contacto.y - ultimoContacto.y;
+            ultimoContacto = contacto;
+            // Eje vertical MUNDIAL: el FBX sanguíneo tiene ejes locales rotados.
+            // Sin salto al centro del dedo, sin límites absolutos de otro modelo.
+            if (Mathf.Abs(desplazamiento) < .00001f) return;
+            MoverManualmente(FlujoNormalizado + desplazamiento / RecorridoManual);
+            return;
+        }
+
+        Vector3 dedoLocal =
+            transform.parent.InverseTransformPoint(other.transform.position);
+        float distancia = Mathf.Abs(dedoLocal.y - ultimoYLocalDedo);
+        float velocidad = distancia / Mathf.Max(Time.deltaTime, 0.0001f);
+        ultimoYLocalDedo = dedoLocal.y;
+
+        if (velocidad > limiteVelocidadAgarre) return;
+
+        Vector3 posicion = transform.localPosition;
+        float destinoY = Mathf.Clamp(
+            dedoLocal.y,
+            limiteInferior,
+            limiteSuperior);
+        posicion.y = Mathf.Lerp(
+            posicion.y,
+            destinoY,
+            Time.deltaTime * velocidadRodillo);
+        posicion.x = posicionInicialLocal.x;
+        posicion.z = posicionInicialLocal.z;
+        transform.localPosition = posicion;
+
+        AplicarFlujoDesdePosicion(posicion.y, true);
+    }
+
+    private void OnTriggerExit(Collider other)
     {
         if (other == dedoActual)
+            dedoActual = null;
+    }
+
+    private void LateUpdate()
+    {
+        // Un Grabbable heredado no puede sacar el interruptor de su guía.
+        if (!controlExterno) return;
+        if (cuerpoManual != null && !cuerpoManual.isKinematic) cuerpoManual.isKinematic = true;
+        EstablecerFlujoNormalizado(FlujoNormalizado, false);
+    }
+
+    public void AbrirCompletamente()
+    {
+        EstablecerFlujoNormalizado(1f, true);
+    }
+
+    public void CerrarCompletamente()
+    {
+        EstablecerFlujoNormalizado(0f, true);
+    }
+
+    public void EstablecerFlujoNormalizado(float flujo, bool notificar = true)
+    {
+        Inicializar(); // Puede llamarse desde Awake de otro componente.
+        flujo = Mathf.Clamp01(flujo);
+
+        if (controlExterno)
         {
-            // Ubicamos al dedo en relación al cuerpo blanco (parent)
-            Vector3 posicionDedoEnPadre = transform.parent.InverseTransformPoint(other.transform.position);
-            
-            // --- CÁLCULO DE VELOCIDAD DE DESLIZAMIENTO ---
-            float distanciaRecorrida = Mathf.Abs(posicionDedoEnPadre.y - ultimoYLocalDedo);
-            float velocidadDedo = distanciaRecorrida / Time.deltaTime;
-            
-            ultimoYLocalDedo = posicionDedoEnPadre.y;
+            FlujoNormalizado = flujo;
+            transform.position = transform.parent.TransformPoint(origenCerrado) +
+                Vector3.up * RecorridoManual * flujo;
+            transform.localRotation = rotacionInicialLocal;
+            return; // Sin emisión ni confirmación automática de una acción manual.
+        }
 
-            // Si el jugador no está deslizando excesivamente rápido (resbalón)
-            if (velocidadDedo <= limiteVelocidadAgarre)
+        Vector3 posicion = transform.localPosition;
+        posicion.y = Mathf.Lerp(limiteInferior, limiteSuperior, flujo);
+        posicion.x = posicionInicialLocal.x;
+        posicion.z = posicionInicialLocal.z;
+        transform.localPosition = posicion;
+
+        AplicarFlujo(flujo, notificar);
+    }
+
+    private bool EsMano(Collider otro)
+    {
+        for (Transform t = otro.transform; t != null; t = t.parent)
+            if (t.CompareTag(tagDedo)) return true;
+        return false;
+    }
+
+    private void MoverManualmente(float flujo)
+    {
+        if (!controlExterno || permitirMovimiento == null || !permitirMovimiento()) return;
+        EstablecerFlujoNormalizado(flujo, false);
+        alMovimientoManual.Invoke(FlujoNormalizado);
+    }
+
+#if UNITY_EDITOR
+    // Simulación explícita para probar sin visor. No existe en el build Quest.
+    public void SimularGestoEnEditor(float flujo) => MoverManualmente(flujo);
+#endif
+
+    public void MostrarIndicacion(string mensaje, bool persistente = false)
+    {
+        Inicializar();
+        if (panelNotificacion == null) return;
+        StopAllCoroutines();
+        StartCoroutine(AnimarPanel(mensaje, persistente));
+    }
+
+    public void OcultarIndicacion()
+    {
+        StopAllCoroutines();
+        if (panelNotificacion != null) panelNotificacion.SetActive(false);
+    }
+
+    private void AplicarFlujoDesdePosicion(float posicionY, bool notificar)
+    {
+        float flujo = Mathf.InverseLerp(
+            limiteInferior,
+            limiteSuperior,
+            posicionY);
+        AplicarFlujo(flujo, notificar);
+    }
+
+    private void AplicarFlujo(float flujo, bool notificar)
+    {
+        FlujoNormalizado = Mathf.Clamp01(flujo);
+
+        if (sistemaGoteo != null)
+            emisionGoteo.rateOverTime = FlujoNormalizado * tasaGoteoMaximo;
+
+        alCambiarFlujo.Invoke(FlujoNormalizado);
+
+        bool cerradoAhora = EstaCerrado;
+        if (cerradoAhora != flujoCerrado)
+        {
+            flujoCerrado = cerradoAhora;
+
+            if (flujoCerrado)
             {
-                Vector3 posLocalActual = transform.localPosition;
-
-                // Calculamos el destino en el EJE Y
-                float yDestino = Mathf.Clamp(posicionDedoEnPadre.y, limiteInferior, limiteSuperior);
-                
-                // Aplicamos el movimiento suavizado
-                posLocalActual.y = Mathf.Lerp(posLocalActual.y, yDestino, Time.deltaTime * velocidadRodillo);
-                
-                // Bloqueamos la X y la Z para que la rueda no se salga del carril
-                posLocalActual.x = posicionInicialLocal.x;
-                posLocalActual.z = posicionInicialLocal.z;
-                
-                transform.localPosition = posLocalActual;
-                ActualizarGoteoYNotificacion(posLocalActual.y);
+                alCerrarRegulador.Invoke();
+                if (notificar)
+                    MostrarNotificacion("Regulador cerrado correctamente");
+            }
+            else
+            {
+                alAbrirRegulador.Invoke();
             }
         }
     }
 
-    void OnTriggerExit(Collider other)
+    private void MostrarNotificacion(string mensaje)
     {
-        if (other == dedoActual) 
-        {
-            dedoActual = null; 
-        }
+        if (panelNotificacion == null) return;
+
+        StopAllCoroutines();
+        StartCoroutine(AnimarPanel(mensaje));
     }
 
-    void ActualizarGoteoYNotificacion(float posY)
+    private IEnumerator AnimarPanel(string mensaje, bool persistente = false)
     {
-        float porcentajeAbierto = Mathf.InverseLerp(limiteInferior, limiteSuperior, posY);
-        if (sistemaGoteo != null) emisionGoteo.rateOverTime = porcentajeAbierto * tasaGoteoMaximo;
-
-        if (porcentajeAbierto <= 0.02f) 
+        if (textoNotificacion != null)
         {
-            if (!cerradoNotificado)
-            {
-                MostrarNotificacion("Regulador cerrado correctamente");
-                cerradoNotificado = true;
-            }
+            textoNotificacion.text = mensaje;
+            textoNotificacion.enableAutoSizing = true;
+            textoNotificacion.fontSizeMin = 18f;
+            textoNotificacion.fontSizeMax = 41.5f;
         }
-        else cerradoNotificado = false;
-    }
 
-    void MostrarNotificacion(string mensaje)
-    {
-        if (panelNotificacion != null)
-        {
-            StopAllCoroutines();
-            StartCoroutine(AnimarPanel(mensaje)); 
-        }
-    }
-
-    IEnumerator AnimarPanel(string mensaje)
-    {
-        if (textoNotificacion != null) textoNotificacion.text = mensaje;
         if (camaraVR != null)
         {
-            Vector3 posicionFrente = camaraVR.position + (camaraVR.forward * distanciaPanel);
-            posicionFrente.y += alturaExtra; 
-            panelNotificacion.transform.position = posicionFrente;
+            Vector3 frente =
+                camaraVR.position + camaraVR.forward * distanciaPanel;
+            frente.y += alturaExtra;
+            panelNotificacion.transform.position = frente;
         }
-        
-        panelNotificacion.transform.localScale = new Vector3(escalaOriginalPanel.x, 0f, escalaOriginalPanel.z); 
+
+        panelNotificacion.transform.localScale =
+            new Vector3(escalaOriginalPanel.x, 0f, escalaOriginalPanel.z);
         panelNotificacion.SetActive(true);
-        
-        float tiempoAnimacion = 0.30f; 
-        float tiempoPasado = 0f;
-        
-        while (tiempoPasado < tiempoAnimacion)
+
+        const float duracion = 0.3f;
+        float tiempo = 0f;
+
+        while (tiempo < duracion)
         {
-            tiempoPasado += Time.deltaTime;
-            float porcentaje = tiempoPasado / tiempoAnimacion;
-            float suavizado = Mathf.SmoothStep(0f, 1f, porcentaje);
-            float nuevaEscalaY = Mathf.Lerp(0f, escalaOriginalPanel.y, suavizado);
-            panelNotificacion.transform.localScale = new Vector3(escalaOriginalPanel.x, nuevaEscalaY, escalaOriginalPanel.z);
+            tiempo += Time.deltaTime;
+            float suave = Mathf.SmoothStep(0f, 1f, tiempo / duracion);
+            panelNotificacion.transform.localScale = new Vector3(
+                escalaOriginalPanel.x,
+                Mathf.Lerp(0f, escalaOriginalPanel.y, suave),
+                escalaOriginalPanel.z);
             yield return null;
         }
+
         panelNotificacion.transform.localScale = escalaOriginalPanel;
-        
+        while (persistente) yield return null; // Hasta confirmar/reiniciar, sin avance por tiempo.
         yield return new WaitForSeconds(tiempoVisibleNotificacion);
-        
-        tiempoPasado = 0f;
-        while (tiempoPasado < tiempoAnimacion)
+
+        tiempo = 0f;
+        while (tiempo < duracion)
         {
-            tiempoPasado += Time.deltaTime;
-            float porcentaje = tiempoPasado / tiempoAnimacion;
-            float nuevaEscalaY = Mathf.Lerp(escalaOriginalPanel.y, 0f, porcentaje);
-            panelNotificacion.transform.localScale = new Vector3(escalaOriginalPanel.x, nuevaEscalaY, escalaOriginalPanel.z);
+            tiempo += Time.deltaTime;
+            panelNotificacion.transform.localScale = new Vector3(
+                escalaOriginalPanel.x,
+                Mathf.Lerp(escalaOriginalPanel.y, 0f, tiempo / duracion),
+                escalaOriginalPanel.z);
             yield return null;
         }
+
         panelNotificacion.SetActive(false);
     }
-
 }

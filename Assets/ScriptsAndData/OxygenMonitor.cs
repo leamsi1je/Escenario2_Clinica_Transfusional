@@ -1,66 +1,24 @@
-// using UnityEngine;
-// using System.Collections;
-// using ChartAndGraph; // Asegúrate de tener el asset instalado
-
-// public class OxygenMonitor : MonoBehaviour
-// {
-//     [Header("Referencias")]
-//     public GraphChart graph;
-//     public TextAsset oxygen; // Aquí arrastras tu archivo oxygen.csv
-
-//     [Header("Configuración")]
-//     public string categoryName = "OXYGEN"; // El nombre que pusiste en el Data del inspector
-//     public float updateDelay = 0.05f; // Velocidad de la señal (ajusta a tu gusto)
-
-//     void Start()
-//     {
-//         if (graph == null || oxygen == null)
-//         {
-//             Debug.LogError("Falta asignar el Graph o el archivo Oxygen en el Inspector");
-//             return;
-//         }
-
-//         // Iniciamos la lectura
-//         StartCoroutine(ReadOxygenCSV());
-//     }
-
-//     IEnumerator ReadOxygenCSV()
-//     {
-//         // Dividimos el contenido del CSV por líneas
-//         string[] lines = oxygen.text.Split('\n');
-
-//         foreach (string line in lines)
-//         {
-//             if (string.IsNullOrWhiteSpace(line))
-//                 continue;
-
-//             // Separamos Tiempo de Valor (asumiendo formato: tiempo,valor)
-//             string[] values = line.Split(',');
-
-//             if (values.Length >= 2)
-//             {
-//                 if (float.TryParse(values[0], out float x) &&
-//                     float.TryParse(values[1], out float y))
-//                 {
-//                     // Normalización (ej: 90–100 → 0.9–1.0)
-//                     float normalizedY = y / 100f;
-
-//                     graph.DataSource.AddPointToCategory(categoryName, x, normalizedY);
-//                 }
-//             }
-
-//             // Simula tiempo real
-//             yield return new WaitForSeconds(updateDelay);
-//         }
-//     }
-// }
-
 using UnityEngine;
 using System.Collections;
-using TMPro; // NUEVO: Librería necesaria para usar TextMeshPro
+using TMPro;
 
 public class OxygenMonitor : MonoBehaviour
 {
+    public MonitorTextos perfilClinico;
+    void OnEnable()
+    {
+        if (perfilClinico != null) perfilClinico.alActualizarSignosVitales.AddListener(SincronizarPerfilClinico);
+    }
+    void OnDisable()
+    {
+        if (perfilClinico != null) perfilClinico.alActualizarSignosVitales.RemoveListener(SincronizarPerfilClinico);
+    }
+    void SincronizarPerfilClinico()
+    {
+        if (perfilClinico != null && perfilClinico.BPMActual > 0 && textoSaturacion != null)
+            textoSaturacion.text = perfilClinico.OxigenoActual + " %";
+    }
+
     [Header("Referencias")]
     // Ahora pedimos un texto en lugar de un gráfico
     public TextMeshProUGUI textoSaturacion; 
@@ -73,6 +31,7 @@ public class OxygenMonitor : MonoBehaviour
 
     void Start()
     {
+        if (perfilClinico != null) { SincronizarPerfilClinico(); return; }
         if (textoSaturacion == null || oxygenFile == null)
         {
             Debug.LogError("Falta asignar el Texto o el archivo CSV en el Inspector");

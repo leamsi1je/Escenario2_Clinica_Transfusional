@@ -5,6 +5,26 @@ using TMPro;
 
 public class ControladorECG : MonoBehaviour
 {
+    [Header("Integración con monitor clínico (opcional)")]
+    public MonitorTextos perfilClinico;
+
+    void Awake()
+    {
+        if (textBPM != null) colorInicialTexto = textBPM.color;
+    }
+
+    void OnEnable()
+    {
+        if (perfilClinico != null)
+            perfilClinico.alActualizarSignosVitales.AddListener(SincronizarPerfilClinico);
+    }
+
+    void OnDisable()
+    {
+        if (perfilClinico != null)
+            perfilClinico.alActualizarSignosVitales.RemoveListener(SincronizarPerfilClinico);
+    }
+
     [Header("Referencias")]
     public GraphChart graph;
     public TextAsset ecgFile;
@@ -51,6 +71,14 @@ public class ControladorECG : MonoBehaviour
     private Coroutine subirBpmCoroutine;
     private Coroutine oscilarBpmCoroutine;
 
+    private void SincronizarPerfilClinico()
+    {
+        if (perfilClinico == null || perfilClinico.BPMActual <= 0) return;
+        bpmActual = perfilClinico.BPMActual;
+        taquicardiaActivada = perfilClinico.EstadoReaccionActivo;
+        ActualizarTextoBPM();
+    }
+
     void Start()
     {
         if (graph == null || ecgFile == null)
@@ -67,12 +95,14 @@ public class ControladorECG : MonoBehaviour
         }
         
         puntosPorFrameBase = puntosPorFrame;
+        if (perfilClinico != null) SincronizarPerfilClinico();
 
         StartCoroutine(ReadECGCSV());
     }
 
     public void InducirTaquicardiaAdversa()
     {
+        if (perfilClinico != null) { perfilClinico.MostrarReaccionTransfusional(); SincronizarPerfilClinico(); return; }
         if (!taquicardiaActivada)
         {
             taquicardiaActivada = true; 
@@ -88,6 +118,7 @@ public class ControladorECG : MonoBehaviour
     /// </summary>
     public void DesactivarTaquicardiaAdversa()
     {
+        if (perfilClinico != null) { perfilClinico.MostrarRecuperacion(); SincronizarPerfilClinico(); return; }
         if (!taquicardiaActivada) return; // ya está normal, no hay nada que desactivar
 
         taquicardiaActivada = false;
@@ -200,6 +231,7 @@ public class ControladorECG : MonoBehaviour
 
     void CalcularBPM(float valorY, float tiempoActual)
     {
+        if (perfilClinico != null) return;
         if (valorY > umbralDeteccion && puedeDetectar && !taquicardiaActivada)
         {
             float intervalo = tiempoActual - tiempoUltimoPico;
@@ -226,4 +258,4 @@ public class ControladorECG : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         puedeDetectar = true;
     }
-} 
+}

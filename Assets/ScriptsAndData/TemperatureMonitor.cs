@@ -4,6 +4,26 @@ using TMPro;
 
 public class TemperatureMonitor : MonoBehaviour
 {
+    [Header("Integración con monitor clínico (opcional)")]
+    public MonitorTextos perfilClinico;
+
+    void Awake()
+    {
+        if (textoTemperatura != null) colorInicialTexto = textoTemperatura.color;
+    }
+
+    void OnEnable()
+    {
+        if (perfilClinico != null)
+            perfilClinico.alActualizarSignosVitales.AddListener(SincronizarPerfilClinico);
+    }
+
+    void OnDisable()
+    {
+        if (perfilClinico != null)
+            perfilClinico.alActualizarSignosVitales.RemoveListener(SincronizarPerfilClinico);
+    }
+
     [Header("Referencias Monitor")]
     public TextMeshProUGUI textoTemperatura; 
     public TextAsset temperatureFile; 
@@ -53,10 +73,23 @@ public class TemperatureMonitor : MonoBehaviour
     // Propiedad del Shader URP que regula la opacidad/intensidad del detalle
     private const string PROPIEDAD_INTENSIDAD_DETALLE = "_DetailAlbedoMapScale";
 
+    private void SincronizarPerfilClinico()
+    {
+        if (perfilClinico == null || perfilClinico.BPMActual <= 0) return;
+        bool reaccion = perfilClinico.EstadoReaccionActivo;
+        if (fiebreActivada != reaccion && pacienteAnimator != null)
+            pacienteAnimator.CrossFadeInFixedTime(reaccion ? nombreEstadoAnimacionFiebre : nombreEstadoAnimacionNormal, 0.5f);
+        fiebreActivada = reaccion;
+        temperaturaActual = perfilClinico.TemperaturaActual;
+        ActualizarTextoYVisuales();
+    }
+
     void Start()
     {
         if (textoTemperatura != null) colorInicialTexto = textoTemperatura.color; 
         
+        if (perfilClinico != null) { SincronizarPerfilClinico(); return; }
+
         // Asegurarnos de que el rubor empiece en 0 (totalmente invisible)
         ActualizarIntensidadRubor(0f);
         
@@ -66,6 +99,7 @@ public class TemperatureMonitor : MonoBehaviour
 
     public void InducirFiebreAdversa()
     {
+        if (perfilClinico != null) { perfilClinico.MostrarReaccionTransfusional(); SincronizarPerfilClinico(); return; }
         if (!fiebreActivada)
         {
             fiebreActivada = true; 
@@ -91,6 +125,7 @@ public class TemperatureMonitor : MonoBehaviour
     /// </summary>
     public void DesactivarFiebreAdversa()
     {
+        if (perfilClinico != null) { perfilClinico.MostrarRecuperacion(); SincronizarPerfilClinico(); return; }
         if (!fiebreActivada) return; // ya está normal, no hay nada que desactivar
 
         fiebreActivada = false;
