@@ -1,4 +1,7 @@
 using Fusion;
+using Fusion.Photon.Realtime;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,7 +14,7 @@ public enum AppRole
 
 [RequireComponent(typeof(NetworkRunner))]
 [RequireComponent(typeof(NetworkSceneManagerDefault))]
-public class FusionBootstrap : SimulationBehaviour, IPlayerJoined
+public class FusionBootstrap : SimulationBehaviour, IPlayerJoined, IPlayerLeft
 {
     [Header("Session")]
     [SerializeField] private string roomName = "TransfusionRoom01";
@@ -39,7 +42,14 @@ public class FusionBootstrap : SimulationBehaviour, IPlayerJoined
 
         ConfigureLocalRig();
 
-        await Connect();
+        try
+        {
+            await Connect();
+        }
+        catch (Exception exception)
+        {
+            Debug.LogError($"[Photon] {CurrentRole} failed to start {roomName}: {exception}");
+        }
     }
 
     private AppRole DetermineRole()
@@ -81,12 +91,20 @@ public class FusionBootstrap : SimulationBehaviour, IPlayerJoined
             LoadSceneMode.Single
         );
 
+        var appSettings = PhotonAppSettings.Global.AppSettings;
+        Debug.Log(
+            $"[Photon] Connecting | Role: {CurrentRole} | Scene: {activeScene.name} | " +
+            $"Room: {roomName} | Requested region: {appSettings.FixedRegion} | " +
+            $"Reachability: {Application.internetReachability}"
+        );
+
         StartGameResult result = await runner.StartGame(
             new StartGameArgs
             {
                 GameMode = GameMode.Shared,
                 SessionName = roomName,
                 PlayerCount = 2,
+                EnableClientSessionCreation = CurrentRole == AppRole.Doctor,
                 Scene = sceneInfo,
                 SceneManager =
                     GetComponent<NetworkSceneManagerDefault>()
@@ -95,20 +113,23 @@ public class FusionBootstrap : SimulationBehaviour, IPlayerJoined
 
         if (result.Ok)
         {
-            Debug.Log(
-                $"Connected to room: {roomName}"
-            );
+            LogSession("Connected");
         }
         else
         {
+            string studentHint = CurrentRole == AppRole.Student
+                ? " Keep the Doctor connected in Unity Editor before launching the APK."
+                : string.Empty;
             Debug.LogError(
-                $"Photon connection failed: {result.ShutdownReason}"
+                $"[Photon] {CurrentRole} could not join {roomName}: {result.ShutdownReason}.{studentHint}"
             );
         }
     }
 
     void IPlayerJoined.PlayerJoined(PlayerRef player)
     {
+        LogSession($"Player {player} joined");
+
         if (player != runner.LocalPlayer)
             return;
 
@@ -137,8 +158,25 @@ public class FusionBootstrap : SimulationBehaviour, IPlayerJoined
             playerObject
         );
 
+        Debug.Log($"[Photon] {CurrentRole} spawned {selectedPrefab.name} for {player}.");
+    }
+
+    void IPlayerLeft.PlayerLeft(PlayerRef player)
+    {
+        LogSession($"Player {player} left");
+    }
+
+    private void LogSession(string message)
+    {
+        var session = runner.SessionInfo;
+        if (!session.IsValid)
+            return;
+
+        var players = runner.ActivePlayers.ToArray();
         Debug.Log(
-            $"{CurrentRole} network player spawned."
+            $"[Photon] {message} | Role: {CurrentRole} | Room: {session.Name} | " +
+            $"Region: {session.Region} | Players: {players.Length}/{session.MaxPlayers} " +
+            $"[{string.Join(", ", players)}]"
         );
     }
 }

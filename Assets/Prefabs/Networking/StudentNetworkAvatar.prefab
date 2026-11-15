@@ -300,6 +300,8 @@ MonoBehaviour:
   localHiddenRenderers:
   - {fileID: 7488773084011487084}
   - {fileID: 3580515498240895169}
+  - {fileID: 5749371000189806983}
+  - {fileID: 5675383967924518037}
 --- !u!114 &-1064092318353748071
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,6 +18,12 @@ public class NetworkXRAvatar : NetworkBehaviour
         if (!Object.HasStateAuthority)
             return;
 
+        foreach (Renderer r in localHiddenRenderers)
+        {
+            if (r != null)
+                r.enabled = false;
+        }
+
         hardware = HardwareRigReferences.Instance;
 
         if (hardware == null)
@@ -26,13 +32,6 @@ public class NetworkXRAvatar : NetworkBehaviour
                 "HardwareRigReferences not found. " +
                 "Check the XR Origin."
             );
-            return;
-        }
-
-        foreach (Renderer r in localHiddenRenderers)
-        {
-            if (r != null)
-                r.enabled = false;
         }
     }
 
