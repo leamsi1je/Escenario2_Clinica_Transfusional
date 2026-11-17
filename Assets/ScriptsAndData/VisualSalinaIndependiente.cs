@@ -30,6 +30,8 @@ public sealed class VisualSalinaIndependiente : MonoBehaviour
     [SerializeField] private int versionModelo;
     [SerializeField, HideInInspector] private GeometriaSondaNaCl geometriaCamilla;
     private Transform soporteRegulador;
+    private Transform gotaSonda;
+    private float faseSonda;
 
     public Transform PuntoAdministracionNaCl => puntoAdministracion;
     public Transform SalidaGotero => salidaGotero;
@@ -122,7 +124,13 @@ public sealed class VisualSalinaIndependiente : MonoBehaviour
     public void EstablecerUso(bool activo)
     {
         fluyendo = activo;
-        if (!activo) faseGota = 0f;
+        if (!activo)
+        {
+            faseGota = 0f;
+            faseSonda = 0f;
+        }
+        if (gotaSonda != null)
+            gotaSonda.gameObject.SetActive(Application.isPlaying && activo && rutaLibre);
         if (gota != null) gota.gameObject.SetActive(Application.isPlaying && activo);
         // La presencia del equipo NO depende del flujo. F5/F7 mantienen el
         // soporte, recipiente y sonda visibles; solo la gota se activa con NaCl.
@@ -146,7 +154,31 @@ public sealed class VisualSalinaIndependiente : MonoBehaviour
         gota.position = Vector3.Lerp(inicioGota.position, finGota.position, faseGota);
     }
 
-    private void LateUpdate() => ActualizarSonda();
+    private void ActualizarFlujoSonda()
+    {
+        if (!Application.isPlaying || !fluyendo || !rutaLibre || gota == null || sonda == null) return;
+
+        if (gotaSonda == null)
+        {
+            gotaSonda = Instantiate(gota, gota.parent);
+            gotaSonda.name = "Indicador de flujo NaCl";
+            gotaSonda.localScale = gota.localScale * 1.5f;
+            gotaSonda.gameObject.SetActive(true);
+        }
+
+        int tramos = sonda.positionCount - 1;
+        if (tramos <= 0) return;
+        faseSonda = Mathf.Repeat(faseSonda + Time.deltaTime * .85f, 1f);
+        float posicion = faseSonda * tramos;
+        int tramo = Mathf.Min((int)posicion, tramos - 1);
+        gotaSonda.position = Vector3.Lerp(sonda.GetPosition(tramo), sonda.GetPosition(tramo + 1), posicion - tramo);
+    }
+
+    private void LateUpdate()
+    {
+        ActualizarSonda();
+        ActualizarFlujoSonda();
+    }
     public void RefrescarSonda() { proximaRuta = 0f; ActualizarSonda(); }
 
 #if UNITY_EDITOR

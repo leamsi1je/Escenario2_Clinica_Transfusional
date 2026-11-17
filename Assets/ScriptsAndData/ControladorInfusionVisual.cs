@@ -224,6 +224,7 @@ public class ControladorInfusionVisual : MonoBehaviour
         Debug.Log("[Infusión] Aviso de reacción: no cambia el flujo ni llama al monitor/avatar.", this);
     }
 
+    [ContextMenu("Demostración / Autorizar cierre de sangre")]
     public void SuspenderSangreValidada()
     {
         if (!preparado || !SangreFluyendo ||
@@ -233,6 +234,7 @@ public class ControladorInfusionVisual : MonoBehaviour
             "Ahora baja manualmente el interruptor de SANGRE hasta cerrarlo.");
     }
 
+    [ContextMenu("Demostración / Autorizar apertura de NaCl")]
     public void ActivarNaClValidado()
     {
         if (!preparado) return;

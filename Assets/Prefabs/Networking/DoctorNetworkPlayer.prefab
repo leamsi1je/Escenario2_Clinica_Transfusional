@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5644938638613797908}
   - component: {fileID: 3330939102598948363}
+  - component: {fileID: 7244380574167829001}
   m_Layer: 0
   m_Name: DoctorNetworkPlayer
   m_TagString: Untagged
@@ -49,5 +50,18 @@ MonoBehaviour:
   EnableInterpolation: 1
   Flags: 262146
   NestedObjects: []
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 7244380574167829001}
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &7244380574167829001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868813238305878004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170c49d3d9c54e9c88780132517b6114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

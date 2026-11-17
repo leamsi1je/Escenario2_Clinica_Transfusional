@@ -49,6 +49,9 @@ public class MonitorTextos : MonoBehaviour
     [Min(0.1f)] public float segundosPorMuestra = 2f;
     public bool repetirPerfil = true;
 
+    [field: SerializeField]
+    public bool UsarValoresDelCaso { get; private set; }
+
     [Header("Inicio")]
     public bool mostrarEstadoEstableAlIniciar = true;
 
@@ -72,13 +75,13 @@ public class MonitorTextos : MonoBehaviour
 
     private void Awake()
     {
-        if (usarPerfilesClinicos) CargarPerfiles();
+        if (usarPerfilesClinicos && !UsarValoresDelCaso) CargarPerfiles();
     }
 
     private void Start()
     {
-        if (!usarPerfilesClinicos) { ActualizarValoresBase(); return; }
-        if (mostrarEstadoEstableAlIniciar && perfilActivo == null)
+        if (!usarPerfilesClinicos && !UsarValoresDelCaso) { ActualizarValoresBase(); return; }
+        if (mostrarEstadoEstableAlIniciar && perfilActivo == null && !EstadoReaccionActivo)
             MostrarEstadoEstable();
     }
 
@@ -90,7 +93,7 @@ public class MonitorTextos : MonoBehaviour
 
     private void Update()
     {
-        if (usarPerfilesClinicos) return;
+        if (usarPerfilesClinicos || UsarValoresDelCaso) return;
         timer += Time.deltaTime;
         if (timer >= 2f) { timer = 0f; ActualizarValoresBase(); }
     }
@@ -120,11 +123,23 @@ public class MonitorTextos : MonoBehaviour
 
     public void MostrarEstadoEstable()
     {
+        if (UsarValoresDelCaso)
+        {
+            EstadoReaccionActivo = false;
+            AplicarSignosVitales(88, 98, 118, 72, 18, 36.7f);
+            return;
+        }
         ActivarPerfil(muestrasNormales, false);
     }
 
     public void MostrarReaccionTransfusional()
     {
+        if (UsarValoresDelCaso)
+        {
+            EstadoReaccionActivo = true;
+            AplicarSignosVitales(102, 97, 116, 70, 20, 38.5f);
+            return;
+        }
         ActivarPerfil(muestrasReaccion, true);
     }
 

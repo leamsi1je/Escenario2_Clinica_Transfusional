@@ -381,12 +381,12 @@ public class MonitorClinicoUI : MonoBehaviour
     {
         if (monitor == null || hrValue == null) return;
         bool preview = !Application.isPlaying;
-        int bpm = preview ? 72 : monitor.BPMActual;
-        int spo2 = preview ? 97 : monitor.OxigenoActual;
-        int rr = preview ? 15 : monitor.RespiracionActual;
-        int sys = preview ? 127 : monitor.SistolicaActual;
-        int dia = preview ? 74 : monitor.DiastolicaActual;
-        float temp = preview ? 36.6f : monitor.TemperaturaActual;
+        int bpm = preview ? (monitor.UsarValoresDelCaso ? 88 : 72) : monitor.BPMActual;
+        int spo2 = preview ? (monitor.UsarValoresDelCaso ? 98 : 97) : monitor.OxigenoActual;
+        int rr = preview ? (monitor.UsarValoresDelCaso ? 18 : 15) : monitor.RespiracionActual;
+        int sys = preview ? (monitor.UsarValoresDelCaso ? 118 : 127) : monitor.SistolicaActual;
+        int dia = preview ? (monitor.UsarValoresDelCaso ? 72 : 74) : monitor.DiastolicaActual;
+        float temp = preview ? (monitor.UsarValoresDelCaso ? 36.7f : 36.6f) : monitor.TemperaturaActual;
 
         hrValue.text = bpm.ToString();
         if (spo2Value != null) spo2Value.text = spo2.ToString();
@@ -397,8 +397,9 @@ public class MonitorClinicoUI : MonoBehaviour
         int sample = preview ? 1 : monitor.MuestraActual + 1;
         if (modeLabel != null)
         {
-            modeLabel.text = (reaction ? "REACCION" : "ESTADO NORMAL") +
-                " | MUESTRA " + sample.ToString("00") + "/60";
+            modeLabel.text = reaction ? "REACCIÓN" : "ESTADO NORMAL";
+            if (!monitor.UsarValoresDelCaso)
+                modeLabel.text += " | MUESTRA " + sample.ToString("00") + "/60";
             modeLabel.color = reaction ? new Color(1f, 0.22f, 0.18f) : new Color(0.25f, 1f, 0.45f);
         }
 

@@ -9,6 +9,7 @@ public class DoctorObserverControls : MonoBehaviour
     [SerializeField] private Camera observerCamera;
     [SerializeField] private Collider feverButton;
     [SerializeField] private InteractableUnityEventWrapper feverInteraction;
+    [SerializeField] private Transform controlRoomDoor;
     [SerializeField] private float moveSpeed = 1.8f;
     [SerializeField] private float mouseSensitivity = 0.12f;
     [SerializeField] private float interactionDistance = 6f;
@@ -16,10 +17,13 @@ public class DoctorObserverControls : MonoBehaviour
     private Quaternion initialCameraRotation;
     private float pitch;
     private bool triggerWasPressed;
+    private bool doorOpen;
 
     private void Awake()
     {
         initialCameraRotation = observerCamera.transform.localRotation;
+        // La puerta se guarda abierta para que la entrada se vea desde Scene View.
+        doorOpen = controlRoomDoor != null && Quaternion.Angle(controlRoomDoor.localRotation, Quaternion.identity) > 1f;
     }
 
     private void Update()
@@ -72,13 +76,33 @@ public class DoctorObserverControls : MonoBehaviour
 
         if (keyboard != null && keyboard.fKey.wasPressedThisFrame)
             PressFever();
+        if (keyboard != null && keyboard.eKey.wasPressedThisFrame && controlRoomDoor != null &&
+            Vector3.ProjectOnPlane(observerCamera.transform.position - controlRoomDoor.position, Vector3.up).sqrMagnitude <= 4f)
+            doorOpen = !doorOpen;
+
+        if (controlRoomDoor != null)
+        {
+            Quaternion target = Quaternion.Euler(0f, doorOpen ? -85f : 0f, 0f);
+            controlRoomDoor.localRotation = Quaternion.RotateTowards(controlRoomDoor.localRotation, target, 170f * Time.deltaTime);
+        }
     }
 
     private void Move(Vector2 movement)
     {
         Vector3 forward = Vector3.ProjectOnPlane(observerCamera.transform.forward, Vector3.up).normalized;
         Vector3 right = Vector3.Cross(Vector3.up, forward);
-        transform.position += (right * movement.x + forward * movement.y) * (moveSpeed * Time.deltaTime);
+        Vector3 delta = (right * movement.x + forward * movement.y) * (moveSpeed * Time.deltaTime);
+        float distance = delta.magnitude;
+        if (distance <= 0f)
+            return;
+
+        Vector3 head = observerCamera.transform.position;
+        if (Physics.CapsuleCast(head - Vector3.up * 1.35f, head - Vector3.up * .15f, .16f,
+                delta / distance, out RaycastHit hit, distance + .02f,
+                Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
+            distance = Mathf.Max(0f, hit.distance - .02f);
+
+        transform.position += delta.normalized * distance;
     }
 
     private void TryPressFever(Ray ray)

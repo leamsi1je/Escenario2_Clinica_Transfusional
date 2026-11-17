@@ -13,6 +13,21 @@ public class HardwareRigReferences : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        HideTrackedHandMesh(leftHand);
+        HideTrackedHandMesh(rightHand);
+    }
+
+    private static void HideTrackedHandMesh(Transform hand)
+    {
+        if (hand == null)
+            return;
+
+        // Keep tracking active and let the rig's interaction hand provide the visible mesh.
+        foreach (OVRMeshRenderer visual in hand.GetComponentsInChildren<OVRMeshRenderer>(true))
+        {
+            if (visual.TryGetComponent(out SkinnedMeshRenderer mesh))
+                mesh.forceRenderingOff = true;
+        }
     }
 
     private void OnDestroy()
