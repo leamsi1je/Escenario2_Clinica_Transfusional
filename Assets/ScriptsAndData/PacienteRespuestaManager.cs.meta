@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2b15dee82a26e484ca4f15719294559f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pacienteAudioSource: {instanceID: 0}
+  - respuestaCansadaAgitada: {fileID: 8300000, guid: 7d0305f085ee25d439d071879c6d75b6,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

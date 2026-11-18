@@ -76,3 +76,11 @@ crashlytics-build.properties
 
 /Assets/PaintIn3D/
 /Assets/PaintIn3D.meta
+
+# Credenciales (no subir: Google las desactiva si se publican)
+/Assets/transfusionvr-ulej-*.json
+/Assets/transfusionvr-ulej-*.json.meta
+
+# Respaldos locales de Ariana
+/Escena_nueva_BACKUP_antes_SALSA.unity
+/SalsaCapturas/
