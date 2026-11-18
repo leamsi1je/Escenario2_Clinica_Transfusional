@@ -39,7 +39,11 @@ public class FlujoEscenario1 : MonoBehaviour
     readonly List<(IInteractableView view, Action<InteractableStateChangeArgs> cb)> subs = new List<(IInteractableView, Action<InteractableStateChangeArgs>)>();
 
     public bool Desbloqueado => desbloqueado;
+    public bool Respondido => respondido;
     public IReadOnlyCollection<GameObject> Visitados => visitados;
+
+    /// <summary>Se dispara una sola vez, cuando queda registrada la alternativa (A, B o C).</summary>
+    public event Action<string> AlResponder;
 
     void Start()
     {
@@ -126,6 +130,7 @@ public class FlujoEscenario1 : MonoBehaviour
 
         // Sin retroalimentación: solo se cierran las opciones para evitar cambios.
         StartCoroutine(CerrarOpciones());
+        AlResponder?.Invoke(letra);
     }
 
     // Se cierra un instante después: si se desactiva en el mismo cuadro del toque,
