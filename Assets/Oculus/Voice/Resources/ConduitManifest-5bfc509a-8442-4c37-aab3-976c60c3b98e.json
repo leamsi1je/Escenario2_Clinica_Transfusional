@@ -1,0 +1,1 @@
+{"Version": "0.1", "ID": "1734286501234666", "Actions": [{"Name": "preguntar_motivo_consulta", "Parameters": [], "ID": "PacienteRespuestaManager.OnPreguntarMotivoConsulta", "Aliases": [], "Assembly": "Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"}], "ErrorHandlers": [], "Entities": [], "Domain": "transfusion"}
